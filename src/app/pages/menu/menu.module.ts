@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { MenuPage } from './menu.page';
 
+/*
+ * Editing the routes and defining them in the order that they are to be displayed  --Ehab Feroze - 1601796*/
 const routes: Routes = [
   {
     path: '',
@@ -35,6 +37,16 @@ const routes: Routes = [
       {
         path: 'fifth',
         loadChildren: '../contact/contact.module#ContactPageModule'
+      },
+
+      {
+        path: 'sixth',
+        loadChildren: '../softskills/softskills.module#SoftskillsPageModule'
+      },
+
+      {
+        path: 'seventh',
+        loadChildren: '../teamwork/teamwork.module#TeamworkPageModule'
       }
     ]
 

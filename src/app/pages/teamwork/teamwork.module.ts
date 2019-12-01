@@ -5,24 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPage } from './login.page';
-import { FirebaseUIModule } from 'firebaseui-angular';
+import { TeamworkPage } from './teamwork.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: TeamworkPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    FirebaseUIModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage]
+  declarations: [TeamworkPage]
 })
-export class LoginPageModule {}
+export class TeamworkPageModule {}

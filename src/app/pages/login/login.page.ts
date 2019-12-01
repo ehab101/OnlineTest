@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(public afAuth: AngularFireAuth) { }
+
+
 
   ngOnInit() {
   }
 
+
+/*
+ * signout function to be called in the login page  --Ehab Feroze - 1601796*/
+
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+      location.reload();
+    });
+  }
 }

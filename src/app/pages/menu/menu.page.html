@@ -1,13 +1,15 @@
 <ion-split-pane>
   <ion-menu contentId= "content">
     <ion-header>
-      <ion-toolbar color="primary">
+      <ion-toolbar color="tertiary">
       <ion-title>Ehab Feroze's CV</ion-title>
       </ion-toolbar>
       </ion-header>
 
+      <!-- Adding all the pages to the sideMenu using ngFor iteration --Ehab Feroze--1601796 -->
+
       <ion-content>
-        <ion-list>
+        <ion-list class="nav">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
             <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath.startsWith(p.url)">
               <ion-label>
@@ -17,7 +19,11 @@
           </ion-menu-toggle>
 
           <ion-item tappable routerLink="/login" routerDirection="root">
-          <ion-icon name="log-out" slot="start"></ion-icon>
+
+            <!-- Signout button to be called if user is logged in -Ehab Feroze -1601796 -->
+
+          <ion-button *ngIf="afAuth.auth.currentUser" (click)="signOut()">Sign Out</ion-button>
+
           </ion-item>
 
 

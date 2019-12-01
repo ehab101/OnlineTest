@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-menu',
@@ -10,23 +12,33 @@ export class MenuPage implements OnInit {
 
 pages = [
  {
-    title: 'Resume',
+    title: 'Personal profile',
     url: '/menu/first'
 },
 
 {
-  title: 'About',
+  title: 'Personal project',
   url: '/menu/second'
 },
 
 {
-  title: 'Project',
+  title: 'Team Project',
   url: '/menu/third'
 },
 
 {
   title: 'Extra Curriculars',
   url: '/menu/fourth'
+},
+
+{
+  title: 'Technical Skills',
+  url: '/menu/seventh'
+},
+
+{
+  title: 'Soft Skills',
+  url: '/menu/sixth'
 },
 
 {
@@ -37,7 +49,7 @@ pages = [
 
 selectedPath = '';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public afAuth: AngularFireAuth) {
   this.router.events.subscribe((event: RouterEvent) => {
     if (event && event.url) {
         this.selectedPath = event.url;
@@ -45,6 +57,12 @@ selectedPath = '';
 
   });
 
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut().then(() => {
+      location.reload();
+    });
   }
 
   ngOnInit() {

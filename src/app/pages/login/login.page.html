@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome to CV Viewer</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title>Ehab Feroze's Resume</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-<ion-button expand="block" routerLink="/menu/first">Login</ion-button>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+
+  <h5>When signed in, please click on the button below to view the resume. Thanks. </h5>
+  <br>
+  
+  
+<!-- Adding firebase ui to application--Ehab Feroze--1601796 -->
+
+<firebase-ui></firebase-ui>
+
+<!-- Displaying the username if user is logged in using ngIf --Ehab Feroze--1601796 -->
+<h1 *ngIf="afAuth.auth.currentUser">  
+  
+
+  Welcome {{afAuth.auth.currentUser.displayName}} </h1>
+
+  <!-- Implementing a button to redirect to the first page of the resume when user has logged in--Ehab Feroze--1601796 -->
+
+  <ion-button class="loginbutton" *ngIf="afAuth.auth.currentUser" expand="block" routerLink="/menu/first">Open CV</ion-button>
+
+  <!-- Implementing a sign out button that takes the user back to the login page --Ehab Feroze--1601796 -->
+
+  <ion-button *ngIf="afAuth.auth.currentUser" (click)="signOut()">Sign Out</ion-button>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
 </ion-content>
